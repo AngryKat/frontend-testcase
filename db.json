@@ -1,0 +1,12 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Mike",
+      "surname": "Mike",
+      "country": "Germany",
+      "phoneNumber": "+90123131412",
+      "email": "mail@mail.com"
+    },
+  ]
+}
