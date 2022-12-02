@@ -34,7 +34,7 @@ export const UserDataPage = () => {
     const [userData, setUserData] = useState<UserData[]>([]);
     const [isModalVisible, setIsModalVisible] = useState(false);
 
-    const updateUserData = () => {
+    const handleSubmit = () => {
         setRowsCount(prev => prev + 1);
     };
     const openModal = () => {
@@ -84,7 +84,7 @@ export const UserDataPage = () => {
                         <UserDataTable data={userData} />
                     </Parallax>
                 </div>
-                <UserFormModal visible={isModalVisible} onClose={closeModal} onUpdateUserData={updateUserData} />
+                <UserFormModal visible={isModalVisible} onClose={closeModal} onSubmit={handleSubmit} />
             </section>
         </>
 

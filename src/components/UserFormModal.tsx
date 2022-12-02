@@ -3,7 +3,6 @@ import { Formik, useFormikContext } from "formik";
 import { AddUserForm } from "./AddUserForm";
 import { UserFormValues } from "../types/user";
 import { addUser } from "../utils/user-requests";
-import { toast } from "react-toastify";
 import { userSchema } from "../utils/user-validation-schema";
 
 
@@ -44,15 +43,14 @@ const UserModal = ({ visible, onClose }: { visible: any, onClose: any }) => {
 interface UserFormModalProps {
     visible: boolean,
     onClose: () => void,
-    onUpdateUserData: () => void,
+    onSubmit: () => void,
 };
 
-export const UserFormModal = ({ onClose, onUpdateUserData, visible = false }: UserFormModalProps) => {
+export const UserFormModal = ({ onClose, onSubmit, visible = false }: UserFormModalProps) => {
     const handleSubmit = async (values: UserFormValues, props: any) => {
         await addUser(values);
-        onUpdateUserData();
+        onSubmit();
         props.resetForm();
-        toast('Succes!');
         onClose();
     };
 

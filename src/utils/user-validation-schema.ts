@@ -8,5 +8,5 @@ export const userSchema = yup.object().shape({
     surname: yup.string().nullable().required('Surname is required'),
     country: yup.string().nullable().required('Country is required'),
     email: yup.string().nullable().email('Email is not valid').required('Email is required'),
-    phoneNumber: yup.string().nullable().matches(phoneRegEx, 'Invalid phone number').required('Phone number is required'),
+    phoneNumber: yup.string().nullable().matches(phoneRegEx, 'Phone number is not valid').required('Phone number is required'),
 });

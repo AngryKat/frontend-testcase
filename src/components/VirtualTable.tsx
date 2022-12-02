@@ -1,11 +1,13 @@
 import { Table, TableProps } from "antd";
 import { FixedSizeGrid as Grid } from 'react-window';
-import { UserData } from "../types/user";
+interface TableRecord {
+    id: string
+}
 
-export const VirtualTable = <RecordType extends object>(props: TableProps<RecordType>) => {
+export const VirtualTable = <RecordType extends TableRecord>(props: TableProps<RecordType>) => {
     const { columns, scroll } = props;
     const renderVirtualTable = (data: any, info: any) => {
-        const filteredData = data.map(({ id, ...rest }: UserData) => rest);
+        const filteredData = data.map(({ id, ...rest }: RecordType) => rest);
         const colWidth = Math.floor(900 / columns!.length);
         return (
             <Grid
