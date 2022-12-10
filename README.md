@@ -8,7 +8,7 @@ In the project directory, you can run:
 
 ### `yarn start`
 
-Runs the app in the development mode and runs the json-server on the port 8080.\
+Runs the app in the development mode and runs the *json-server* on the port 8080.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
