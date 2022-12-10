@@ -3,9 +3,13 @@ import { v4 as uuidv4 } from 'uuid';
 import { UserFormValues } from "../types/user";
 import { sendRequest } from "./api";
 
-export const getUsers = async () => {
+export const getUsers = async (page?: number) => {
     try {
-        const { data } = await sendRequest('/users');
+        let requestPath = '/users';
+        if (page) {
+            requestPath += `?_page=${page}`;
+        }
+        const { data } = await sendRequest(requestPath);
         return data;
     } catch ({ message }) {
         toast.error(`Error occurred while fetching users: ${message} `)
