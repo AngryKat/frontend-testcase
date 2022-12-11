@@ -4,6 +4,7 @@ import { AddUserForm } from "./AddUserForm";
 import { UserFormValues } from "../types/user";
 import { addUser } from "../utils/user-requests";
 import { userSchema } from "../utils/user-validation-schema";
+import { UserDataContextType, useUserDataContext } from "./UserDataPage";
 
 
 const initialValues = {
@@ -43,13 +44,16 @@ const UserModal = ({ visible, onClose }: { visible: any, onClose: any }) => {
 interface UserFormModalProps {
     visible: boolean,
     onClose: () => void,
-    onSubmit: () => void,
 };
 
-export const UserFormModal = ({ onClose, onSubmit, visible = false }: UserFormModalProps) => {
+export const UserFormModal = ({ onClose, visible = false }: UserFormModalProps) => {
+    const { updateTotalCount, updateUserData, hasMoreUsers } = useUserDataContext() as UserDataContextType;
     const handleSubmit = async (values: UserFormValues, props: any) => {
-        await addUser(values);
-        onSubmit();
+        const response = await addUser(values);
+        if (!hasMoreUsers) {
+            updateUserData(response?.data);
+        };
+        updateTotalCount();
         props.resetForm();
         onClose();
     };
