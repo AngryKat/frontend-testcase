@@ -80,7 +80,6 @@ export const UserDataPage = () => {
     };
 
     const fetchUsers = async () => {
-        console.log('aaa fetch!')
         const response = await getUsers(page);
         if (response?.data.length <= 0) {
             setHasMoreUsers(false);

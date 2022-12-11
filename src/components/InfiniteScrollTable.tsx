@@ -26,8 +26,6 @@ export const InfiniteScrollTable = <RecordType extends TableRecord>(props: Virtu
     };
     const { columns, onFetch, hasMoreData } = props;
     const colWidth = Math.floor(900 / (columns?.length || 1));
-    console.log(colWidth)
-
     const renderVirtualTable = (data: any, info: any) => {
         const filteredData = data.map(({ id, ...rest }: RecordType) => rest);
         return (
