@@ -1,0 +1,11 @@
+.InfiniteScrollTable {
+    .spinner {
+        text-align: center;
+    }
+
+    .TableRow-cell {
+        height: 30;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
